@@ -1,0 +1,20 @@
+name: Java Cl
+on: [push]
+
+jobs:
+  build:
+    runs-on: ${{matrix.java}}
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, ubuntu-20.04]
+        version: [10, 12, 14]
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.version }}
+
+-name: Set up JDK ${{matrix.java}}
+use: actions/setp-java@v2
+with:
+  java-version: ${{matrix.java}}
+  distribution: 'adopt'
