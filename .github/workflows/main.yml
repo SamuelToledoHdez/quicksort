@@ -3,15 +3,15 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ${{matrix.java}}
+    runs-on: ${{matrix.os}}
     strategy:
       matrix:
         os: [ubuntu-22.04, ubuntu-20.04]
         version: [10, 12, 14]
     steps:
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
         with:
-          node-version: ${{ matrix.version }}
+          node-version: ${{ matrix.java }}
 
       - name: Set up JDK ${{matrix.java}}
         uses: actions/setp-java@v2
